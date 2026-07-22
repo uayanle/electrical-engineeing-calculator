@@ -4,7 +4,7 @@ A desktop application built with Python and Tkinter containing useful electrical
 
 ## Features
 
-- Three Phase Power Calculator ✅
+- Three Phase Power Calculator 
 - Voltage Drop Calculator (Coming Soon)
 - Transformer Calculator (Coming Soon)
 - Power Factor Calculator (Coming Soon)
