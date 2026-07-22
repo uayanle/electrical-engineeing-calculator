@@ -1,4 +1,6 @@
 import tkinter as tk
+import math
+
 
 root = tk.Tk()  # creates the main application window
 
@@ -26,11 +28,122 @@ menu_title = tk.Label(
 # adding padding to the menu title to make it look better
 menu_title.pack(pady=20)
 
+
+# creating my main content workspace
+content_frame = tk.Frame(root, bg='white')
+content_frame.pack(side='right', expand=True, fill='both')
+
+# welcome message
+welcome_label = tk.Label(
+    content_frame,
+    text='Welcome to the Electrical Engineering Calculator!',
+    font=('Arial', 18),
+    bg='white',
+
+)
+
+# adding padding to the welcome message to make it look better
+welcome_label.pack(pady=40)
+
+
+def show_three_phase_calculator():
+    """Display the Three Phase Calculator page."""
+
+    # Remove any existing widgets in the content frame
+    for widget in content_frame.winfo_children():
+        widget.destroy()
+
+    # create a new title
+    title = tk.Label(
+        content_frame,
+        text='Three Phase Calculator',
+        font=('Arial', 20, 'bold'),
+        bg='white',
+    )
+
+    title.pack(pady=20)
+
+# create a label and entry for voltage
+    voltage_label = tk.Label(
+        content_frame,
+        text='Voltage (V):',
+        font=('Arial', 12),
+    )
+    voltage_label.pack(pady=5)
+
+    voltage_entry = tk.Entry(
+        content_frame,
+        width=20,
+        font=('Arial', 12)
+    )
+    voltage_entry.pack(pady=5)
+
+    # create a label and entry for current
+    current_label = tk.Label(
+        content_frame,
+        text='Current (A):',
+        font=('Arial', 12),
+
+    )
+    current_label.pack(pady=5)
+
+    current_entry = tk.Entry(
+        content_frame,
+        width=20,
+        font=('Arial', 12),
+    )
+    current_entry.pack(pady=5)
+
+    # create a label and entry for power factor
+    power_factor_label = tk.Label(
+        content_frame,
+        text='Power Factor:',
+        font=('Arial', 12),
+    )
+    power_factor_label.pack(pady=5)
+
+    power_factor_entry = tk.Entry(
+        content_frame,
+        width=20,
+        font=('Arial', 12),
+    )
+    power_factor_entry.pack(pady=5)
+
+    # Calculation function
+    def calculate_three_phase_power():
+        try:
+            voltage = float(voltage_entry.get())
+            current = float(current_entry.get())
+            power_factor = float(power_factor_entry.get())
+            power = math.sqrt(3) * voltage * current * power_factor
+            power_kw = power / 1000  # convert to kilowatts
+            result_label.config(text=f"Power: {power_kw:.2f} kW")
+        except ValueError:
+            result_label.config(text="Please enter valid numbers.")
+
+    # calculate button
+    calculate_button = tk.Button(
+        content_frame,
+        text='Calculate',
+        font=('Arial', 12),
+        command=calculate_three_phase_power
+    )
+    calculate_button.pack(pady=10)
+    result_label = tk.Label(
+        content_frame,
+        text="Power:",
+        font=("Arial", 14),
+        bg="white",
+    )
+    result_label.pack(pady=20)
+
+
 # adding the first button
 three_phase_button = tk.Button(
     menu_frame,
     text='Three Phase Calculator',
     width=20,
+    command=show_three_phase_calculator
 )
 three_phase_button.pack(pady=5)
 
@@ -39,6 +152,7 @@ voltage_drop_button = tk.Button(
     menu_frame,
     text='Voltage Drop Calculator',
     width=20,
+
 
 )
 voltage_drop_button.pack(pady=5)
@@ -86,23 +200,6 @@ short_circuit_button = tk.Button(
 )
 
 short_circuit_button.pack(pady=5)
-
-# creating my main content workspace
-content_frame = tk.Frame(root, bg='white')
-content_frame.pack(side='right', expand=True, fill='both')
-
-# welcome message
-welcome_label = tk.Label(
-    content_frame,
-    text='Welcome to the Electrical Engineering Calculator!',
-    font=('Arial', 18),
-    bg='white',
-
-)
-
-# adding padding to the welcome message to make it look better
-welcome_label.pack(pady=40)
-
 
 # keep the application running
 root.mainloop()
