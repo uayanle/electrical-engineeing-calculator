@@ -1,4 +1,6 @@
 import tkinter as tk
+from calculators.three_phase import show_three_phase_calculator
+from calculators.voltage_drop import show_voltage_drop_calculator
 import math
 
 
@@ -152,6 +154,7 @@ voltage_drop_button = tk.Button(
     menu_frame,
     text='Voltage Drop Calculator',
     width=20,
+    command=lambda: show_voltage_drop_calculator(content_frame)
 
 
 )
