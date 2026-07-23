@@ -1,6 +1,7 @@
 import tkinter as tk
 from calculators.three_phase import show_three_phase_calculator
 from calculators.voltage_drop import show_voltage_drop_calculator
+from calculators.transformer import show_transformer_calculator
 import math
 
 
@@ -174,6 +175,7 @@ transformer_button = tk.Button(
     menu_frame,
     text='Transformer Calculator',
     width=20,
+    command=lambda: show_transformer_calculator(content_frame)
 
 )
 transformer_button.pack(pady=5)
