@@ -80,4 +80,4 @@ def show_voltage_drop_calculator(content_frame):
         command=calculate_voltage_drop
     )
 
-    calculate_button.pack(pady=10)
+    calculate_button.pack(pady=5)

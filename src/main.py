@@ -2,6 +2,7 @@ import tkinter as tk
 from calculators.three_phase import show_three_phase_calculator
 from calculators.voltage_drop import show_voltage_drop_calculator
 from calculators.transformer import show_transformer_calculator
+from calculators.power_factor import show_power_factor_calculator
 import math
 
 
@@ -166,6 +167,7 @@ power_factor_button = tk.Button(
     menu_frame,
     text='Power Factor Calculator',
     width=20,
+    command=lambda: show_power_factor_calculator(content_frame)
 
 )
 power_factor_button.pack(pady=5)
